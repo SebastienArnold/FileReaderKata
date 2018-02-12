@@ -3,7 +3,7 @@ using FileReader.Core.Interfaces;
 
 namespace FileReader.Core
 {
-    public class SimpleTextReader : ISimpleTextReader
+    public class SimpleTextReader : ITextReader
     {
         public string ReadFile(string path)
         {

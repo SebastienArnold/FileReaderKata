@@ -1,6 +1,6 @@
 ﻿namespace FileReader.Core.Interfaces
 {
-    public interface ISimpleTextReader
+    public interface ITextReader
     {
         string ReadFile(string path);
     }

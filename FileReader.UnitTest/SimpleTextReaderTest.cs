@@ -12,11 +12,11 @@ namespace FileReader.UnitTest
         public void ShouldReadASimpleFile()
         {
             // Arrange
-            ISimpleTextReader reader = new SimpleTextReader();
-            var expected = "My line 1\r\n\r\nMy line 3 (2 is empty)";
+            ITextReader reader = new SimpleTextReader();
+            var expected = File.ReadAllText("Resources\\SimpleTextFile.txt");
 
             // Act
-            var content = reader.ReadFile("SimpleTextFile.txt");
+            var content = reader.ReadFile("Resources\\SimpleTextFile.txt");
 
             // Assert
             Assert.AreEqual(expected, content);
@@ -27,7 +27,7 @@ namespace FileReader.UnitTest
         public void ShouldThrowFileNotFoundExceptionWhenFileDoNotExist()
         {
             // Arrange
-            ISimpleTextReader reader = new SimpleTextReader();
+            ITextReader reader = new SimpleTextReader();
 
             // Act
             reader.ReadFile("NotExistingFile.txt");
