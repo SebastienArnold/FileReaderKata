@@ -54,8 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EncryptedReaderTest.cs" />
+    <Compile Include="FileReaderFactoryTest.cs" />
     <Compile Include="ReverseEncryptorTest.cs" />
+    <Compile Include="AccessManagerTest.cs" />
     <Compile Include="XmlTextReaderTest.cs" />
     <Compile Include="SimpleTextReaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SimpleReversedTextFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SimpleTextFile-userA.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
