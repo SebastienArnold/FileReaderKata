@@ -90,6 +90,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\JsonReverted.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\SimpleTextFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

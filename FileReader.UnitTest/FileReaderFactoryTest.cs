@@ -45,6 +45,24 @@ namespace FileReader.UnitTest
         }
 
         [TestMethod]
+        public void ShouldBeAbleToReadReversedJson()
+        {
+            // Arrange
+            var expectedXmlContent = File.ReadAllText("Resources\\FormattedJsonFile.json");
+
+            // Act
+            var readerResult = FileReaderFactory.InitializeReader()
+                .UsingTextReader(new JsonTextReader())
+                .WithEncryptor(new ReverseEncryptor())
+                .WithoutSecurity()
+                .ReadFile("Resources\\JsonReverted.json");
+
+            // Assert
+            Assert.IsTrue(readerResult.AccessGranted);
+            Assert.AreEqual(expectedXmlContent, readerResult.Content);
+        }
+
+        [TestMethod]
         public void ShouldBeNotGrantedToReadXmlIfUseSecurityAndNotAuthorizedUser()
         {
             // Arrange
