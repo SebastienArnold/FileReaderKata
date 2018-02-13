@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using FileReader.Core.Interfaces;
+using FileReader.Interfaces;
 
 namespace FileReader.Core
 {

@@ -1,4 +1,4 @@
-﻿namespace FileReader.Core.Interfaces
+﻿namespace FileReader.Interfaces
 {
     public interface ITextReader
     {

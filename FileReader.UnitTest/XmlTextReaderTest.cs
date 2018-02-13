@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using FileReader.Core;
-using FileReader.Core.Interfaces;
+using FileReader.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FileReader.UnitTest

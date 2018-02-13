@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using System.Xml;
-using FileReader.Core.Interfaces;
+using FileReader.Interfaces;
 
 namespace FileReader.Core
 {
