@@ -21,18 +21,5 @@ namespace FileReader.UnitTest
             // Assert
             Assert.AreEqual(expected, content);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(FileNotFoundException))]
-        public void ShouldThrowFileNotFoundExceptionWhenFileDoNotExist()
-        {
-            // Arrange
-            ITextReader reader = new SimpleTextReader();
-
-            // Act
-            reader.Read(File.ReadAllText("NotExistingFile.txt"));
-
-            // Assert exception
-        }
     }
 }
