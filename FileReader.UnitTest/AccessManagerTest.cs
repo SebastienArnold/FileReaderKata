@@ -14,7 +14,7 @@ namespace FileReader.UnitTest
             var accessManager = new SimpleAccessManager();
 
             // Act
-            var canAccess = accessManager.CanAccess("Resources\\SimpleTextFile-userA.txt", user);
+            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-userA.xml", user);
 
             // Assert
             Assert.IsTrue(canAccess);
@@ -28,7 +28,7 @@ namespace FileReader.UnitTest
             var accessManager = new SimpleAccessManager();
 
             // Act
-            var canAccess = accessManager.CanAccess("Resources\\SimpleTextFile-userA.txt", user);
+            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-userA.xml", user);
 
             // Assert
             Assert.IsFalse(canAccess);
@@ -42,7 +42,7 @@ namespace FileReader.UnitTest
             var accessManager = new SimpleAccessManager();
 
             // Act
-            var canAccess = accessManager.CanAccess("Resources\\SimpleTextFile-userA.txt", user);
+            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-userA.xml", user);
 
             // Assert
             Assert.IsTrue(canAccess);
