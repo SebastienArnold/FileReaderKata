@@ -7,7 +7,7 @@ namespace FileReader.Core
 {
     public class XmlTextReader : ITextReader
     {
-        public string ReadFile(string path)
+        public string Read(string content)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -15,7 +15,7 @@ namespace FileReader.Core
                 {
                     var document = new XmlDocument();
 
-                    document.Load(path);
+                    document.LoadXml(content);
                     xmlWriter.Formatting = Formatting.Indented;
 
                     document.WriteContentTo(xmlWriter);

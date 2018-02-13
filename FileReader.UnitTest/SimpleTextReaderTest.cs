@@ -16,7 +16,7 @@ namespace FileReader.UnitTest
             var expected = "My line 1\r\n\r\nMy line 3 (2 is empty)";
 
             // Act
-            var content = reader.ReadFile("Resources\\SimpleTextFile.txt");
+            var content = reader.Read(File.ReadAllText("Resources\\SimpleTextFile.txt"));
 
             // Assert
             Assert.AreEqual(expected, content);
@@ -30,7 +30,7 @@ namespace FileReader.UnitTest
             ITextReader reader = new SimpleTextReader();
 
             // Act
-            reader.ReadFile("NotExistingFile.txt");
+            reader.Read(File.ReadAllText("NotExistingFile.txt"));
 
             // Assert exception
         }

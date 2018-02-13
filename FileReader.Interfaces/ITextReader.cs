@@ -2,6 +2,6 @@
 {
     public interface ITextReader
     {
-        string ReadFile(string path);
+        string Read(string contentToRead);
     }
 }

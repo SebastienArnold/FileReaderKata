@@ -1,6 +1,4 @@
-﻿using System.CodeDom;
-using System.IO;
-using FileReader.SimpleEncryption;
+﻿using FileReader.SimpleEncryption;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FileReader.UnitTest

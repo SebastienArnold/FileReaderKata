@@ -16,7 +16,7 @@ namespace FileReader.UnitTest
             var expected = File.ReadAllText("Resources\\FormattedXmlFile.xml");
             
             // Act
-            var content = reader.ReadFile("Resources\\FormattedXmlFile.xml");
+            var content = reader.Read(File.ReadAllText("Resources\\FormattedXmlFile.xml"));
 
             // Assert
             Assert.AreEqual(expected, content);
@@ -30,7 +30,7 @@ namespace FileReader.UnitTest
             var expected = File.ReadAllText("Resources\\FormattedXmlFile.xml");
 
             // Act
-            var content = reader.ReadFile("Resources\\InlineXmlFile.xml");
+            var content = reader.Read(File.ReadAllText(("Resources\\InlineXmlFile.xml")));
 
             // Assert
             Assert.AreEqual(expected, content);
@@ -44,7 +44,7 @@ namespace FileReader.UnitTest
             ITextReader reader = new XmlTextReader();
 
             // Act
-            reader.ReadFile("Resources\\NotExistingFile.txt");
+            reader.Read(File.ReadAllText("Resources\\NotExistingFile.txt"));
 
             // Assert exception
         }
@@ -57,7 +57,7 @@ namespace FileReader.UnitTest
             ITextReader reader = new XmlTextReader();
 
             // Act
-            reader.ReadFile("Resources\\SimpleTextFile.txt");
+            reader.Read(File.ReadAllText("Resources\\SimpleTextFile.txt"));
 
             // Assert exception
         }

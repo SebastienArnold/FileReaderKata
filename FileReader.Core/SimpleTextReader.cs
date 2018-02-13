@@ -1,13 +1,12 @@
-﻿using System.IO;
-using FileReader.Interfaces;
+﻿using FileReader.Interfaces;
 
 namespace FileReader.Core
 {
     public class SimpleTextReader : ITextReader
     {
-        public string ReadFile(string path)
+        public string Read(string content)
         {
-            return File.ReadAllText(path);
+            return content;
         }
     }
 }

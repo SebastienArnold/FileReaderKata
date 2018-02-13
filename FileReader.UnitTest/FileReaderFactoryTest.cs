@@ -27,6 +27,24 @@ namespace FileReader.UnitTest
         }
 
         [TestMethod]
+        public void ShouldBeAbleToReadReversedXml()
+        {
+            // Arrange
+            var expectedXmlContent = File.ReadAllText("Resources\\FormattedXmlFile.xml");
+
+            // Act
+            var readerResult = FileReaderFactory.InitializeReader()
+                .UsingTextReader(new XmlTextReader())
+                .WithEncryptor(new ReverseEncryptor())
+                .WithoutSecurity()
+                .ReadFile("Resources\\FormattedXmlFileReversed.xml");
+
+            // Assert
+            Assert.IsTrue(readerResult.AccessGranted);
+            Assert.AreEqual(expectedXmlContent, readerResult.Content);
+        }
+
+        [TestMethod]
         public void ShouldBeNotGrantedToReadXmlIfUseSecurityAndNotAuthorizedUser()
         {
             // Arrange

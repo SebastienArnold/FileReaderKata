@@ -1,6 +1,7 @@
 ﻿using System;
 using FileReader.Interfaces;
 using FileReader.Interfaces.FluentReaderFactory;
+using System.IO;
 
 namespace FileReader.Core
 {
@@ -92,14 +93,15 @@ namespace FileReader.Core
                 return new ReaderResult(false, string.Empty);
             }
 
-            var content = _textReader.ReadFile(path);
+            var fileContent = File.ReadAllText(path);
 
             if (_encryptor != null)
             {
-                content = _encryptor.Decrypt(content);
+                fileContent = _encryptor.Decrypt(fileContent);
             }
 
-            return new ReaderResult(true, content);
+            var contentRead = _textReader.Read(fileContent);
+            return new ReaderResult(true, contentRead);
         }
     }
 }
