@@ -66,7 +66,7 @@ namespace FileReader.UnitTest
         public void ShouldBeGrantedToReadXmlIfUseSecurityAndAuthorizedUser()
         {
             // Arrange
-            var simpleText = File.ReadAllText("Resources\\FormattedXmlFile-userA.xml");
+            var xmlContent = File.ReadAllText("Resources\\FormattedXmlFile-userA.xml");
             var allowedUser = "userA";
 
             // Act
@@ -78,22 +78,78 @@ namespace FileReader.UnitTest
 
             // Assert
             Assert.IsTrue(readerResult.AccessGranted);
-            Assert.AreEqual(simpleText, readerResult.Content);
+            Assert.AreEqual(xmlContent, readerResult.Content);
         }
 
         [TestMethod]
         public void ShouldBeGrantedToReadXmlIfUseSecurityAndAdminUser()
         {
             // Arrange
-            var simpleText = File.ReadAllText("Resources\\FormattedXmlFile-userA.xml");
-            var allowedUser = SimpleAccessManager.adminIdentity;
+            var xmlContent = File.ReadAllText("Resources\\FormattedXmlFile-userA.xml");
+            var adminUser = SimpleAccessManager.adminIdentity;
 
             // Act
             var readerResult = FileReaderFactory.InitializeReader()
                 .UsingTextReader(new XmlTextReader())
                 .WithoutEncryption()
-                .WithSecurityAsUser(new SimpleAccessManager(), allowedUser)
+                .WithSecurityAsUser(new SimpleAccessManager(), adminUser)
                 .ReadFile("Resources\\FormattedXmlFile-userA.xml");
+
+            // Assert
+            Assert.IsTrue(readerResult.AccessGranted);
+            Assert.AreEqual(xmlContent, readerResult.Content);
+        }
+
+        [TestMethod]
+        public void ShouldBeNotGrantedToReadTextIfUseSecurityAndNotAuthorizedUser()
+        {
+            // Arrange
+            var user = "userB";
+
+            // Act
+            var readerResult = FileReaderFactory.InitializeReader()
+                .UsingTextReader(new SimpleTextReader())
+                .WithoutEncryption()
+                .WithSecurityAsUser(new SimpleAccessManager(), user)
+                .ReadFile("Resources\\SimpleTextFile-userA.txt");
+
+            // Assert
+            Assert.IsFalse(readerResult.AccessGranted);
+            Assert.AreEqual(string.Empty, readerResult.Content);
+        }
+
+        [TestMethod]
+        public void ShouldBeGrantedToReadTextFileIfUseSecurityAndAuthorizedUser()
+        {
+            // Arrange
+            var simpleText = File.ReadAllText("Resources\\SimpleTextFile-userA.txt");
+            var allowedUser = "userA";
+
+            // Act
+            var readerResult = FileReaderFactory.InitializeReader()
+                .UsingTextReader(new SimpleTextReader())
+                .WithoutEncryption()
+                .WithSecurityAsUser(new SimpleAccessManager(), allowedUser)
+                .ReadFile("Resources\\SimpleTextFile-userA.txt");
+
+            // Assert
+            Assert.IsTrue(readerResult.AccessGranted);
+            Assert.AreEqual(simpleText, readerResult.Content);
+        }
+
+        [TestMethod]
+        public void ShouldBeGrantedToReadTextFileIfUseSecurityAndAdminUser()
+        {
+            // Arrange
+            var simpleText = File.ReadAllText("Resources\\SimpleTextFile-userA.txt");
+            var allowedUser = SimpleAccessManager.adminIdentity;
+
+            // Act
+            var readerResult = FileReaderFactory.InitializeReader()
+                .UsingTextReader(new SimpleTextReader())
+                .WithoutEncryption()
+                .WithSecurityAsUser(new SimpleAccessManager(), allowedUser)
+                .ReadFile("Resources\\SimpleTextFile-userA.txt");
 
             // Assert
             Assert.IsTrue(readerResult.AccessGranted);
