@@ -13,10 +13,12 @@ namespace FileReader.UnitTest
         {
             // Arrange
             ITextReader reader = new XmlTextReader();
-            var expected = File.ReadAllText("Resources\\FormattedXmlFile-userA.xml");
+            var expected = File.ReadAllText("Resources\\FormattedXmlFile-roleA.xml");
             
             // Act
-            var content = reader.Read(File.ReadAllText("Resources\\FormattedXmlFile-userA.xml"));
+            var content = reader.Read(File.ReadAllText("Resources\\FormattedXmlFile-roleA.xml"));
+
+            File.WriteAllText("xmlFormatted",content);
 
             // Assert
             Assert.AreEqual(expected, content);
@@ -27,7 +29,7 @@ namespace FileReader.UnitTest
         {
             // Arrange
             ITextReader reader = new XmlTextReader();
-            var expected = File.ReadAllText("Resources\\FormattedXmlFile-userA.xml");
+            var expected = File.ReadAllText("Resources\\FormattedXmlFile-roleA.xml");
 
             // Act
             var content = reader.Read(File.ReadAllText(("Resources\\XmlFile.xml")));
@@ -57,7 +59,7 @@ namespace FileReader.UnitTest
             ITextReader reader = new XmlTextReader();
 
             // Act
-            reader.Read(File.ReadAllText("Resources\\TextFile-userA.txt"));
+            reader.Read(File.ReadAllText("Resources\\TextFile-roleA.txt"));
 
             // Assert exception
         }

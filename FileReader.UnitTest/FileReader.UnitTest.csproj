@@ -83,7 +83,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FormattedJsonFile-userA.json">
+    <None Include="Resources\FormattedJsonFile-roleA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\RevertedJsonFile.json">
@@ -101,12 +101,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TextFile-userA.txt">
+    <None Include="Resources\TextFile-roleA.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FormattedXmlFile-userA.xml">
+    <None Include="Resources\FormattedXmlFile-roleA.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

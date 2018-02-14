@@ -21,9 +21,9 @@ namespace FileReader.UnitTest
         }   
 
         [TestMethod]
-        [DataRow("SimpleTextReader", "TextFile-userA.txt", "RevertedTextFile.txt")]
-        [DataRow("XmlTextReader", "FormattedXmlFile-userA.xml", "RevertedXmlFile.xml")]
-        [DataRow("JsonTextReader", "FormattedJsonFile-userA.json", "RevertedJsonFile.json")]
+        [DataRow("SimpleTextReader", "TextFile-roleA.txt", "RevertedTextFile.txt")]
+        [DataRow("XmlTextReader", "FormattedXmlFile-roleA.xml", "RevertedXmlFile.xml")]
+        [DataRow("JsonTextReader", "FormattedJsonFile-roleA.json", "RevertedJsonFile.json")]
         public void ShouldBeAbleToReadReversedFile(string textReaderName, string fileNameWithExpected, string fileNameWithContentToRead)
         {
             // Arrange
@@ -36,26 +36,28 @@ namespace FileReader.UnitTest
                 .WithoutSecurity()
                 .ReadFile($"Resources\\{fileNameWithContentToRead}");
 
+            File.WriteAllText("text", readerResult.Content);
+
             // Assert
             Assert.IsTrue(readerResult.AccessGranted);
             Assert.AreEqual(expectedContent, readerResult.Content);
         }
 
         [TestMethod]
-        [DataRow("XmlTextReader", "FormattedXmlFile-userA.xml")]
-        [DataRow("SimpleTextReader", "TextFile-userA.txt")]
-        [DataRow("JsonTextReader", "FormattedJsonFile-userA.json")]
-        public void ShouldBeNotGrantedToReadXmlIfUseSecurityAndNotAuthorizedUser
+        [DataRow("XmlTextReader", "FormattedXmlFile-roleA.xml")]
+        [DataRow("SimpleTextReader", "TextFile-roleA.txt")]
+        [DataRow("JsonTextReader", "FormattedJsonFile-roleA.json")]
+        public void ShouldBeNotGrantedToReadIfUseSecurityAndNotAuthorizedRole
             (string textReaderName, string fileNameWithContentToRead)
         {
             // Arrange
-            var user = "userB";
+            var role = "roleB";
 
             // Act
             var readerResult = FileReaderFactory.InitializeReader()
                 .UsingTextReader(_readers[textReaderName])
                 .WithoutEncryption()
-                .WithSecurityAsUser(new SimpleAccessManager(), user)
+                .WithSecurityAsUser(new SimpleAccessManager(), role)
                 .ReadFile($"Resources\\{fileNameWithContentToRead}");
 
             // Assert
@@ -64,21 +66,21 @@ namespace FileReader.UnitTest
         }
 
         [TestMethod]
-        [DataRow("XmlTextReader", "FormattedXmlFile-userA.xml")]
-        [DataRow("SimpleTextReader", "TextFile-userA.txt")]
-        [DataRow("JsonTextReader", "FormattedJsonFile-userA.json")]
+        [DataRow("XmlTextReader", "FormattedXmlFile-roleA.xml")]
+        [DataRow("SimpleTextReader", "TextFile-roleA.txt")]
+        [DataRow("JsonTextReader", "FormattedJsonFile-roleA.json")]
         public void ShouldBeGrantedToReadIfUseSecurityAndAuthorizedUser
             (string textReaderName, string fileNameWithContentToRead)
         {
             // Arrange
             var expectedContent = File.ReadAllText($"Resources\\{fileNameWithContentToRead}");
-            var allowedUser = "userA";
+            var allowedRole = "roleA";
 
             // Act
             var readerResult = FileReaderFactory.InitializeReader()
                 .UsingTextReader(_readers[textReaderName])
                 .WithoutEncryption()
-                .WithSecurityAsUser(new SimpleAccessManager(), allowedUser)
+                .WithSecurityAsUser(new SimpleAccessManager(), allowedRole)
                 .ReadFile($"Resources\\{fileNameWithContentToRead}");
 
             // Assert
@@ -87,20 +89,20 @@ namespace FileReader.UnitTest
         }
 
         [TestMethod]
-        [DataRow("XmlTextReader", "FormattedXmlFile-userA.xml")]
-        [DataRow("SimpleTextReader", "TextFile-userA.txt")]
-        [DataRow("JsonTextReader", "FormattedJsonFile-userA.json")]
+        [DataRow("XmlTextReader", "FormattedXmlFile-roleA.xml")]
+        [DataRow("SimpleTextReader", "TextFile-roleA.txt")]
+        [DataRow("JsonTextReader", "FormattedJsonFile-roleA.json")]
         public void ShouldBeGrantedToReadIfUseSecurityAndAdminUser(string textReaderName, string fileNameWithContentToRead)
         {
             // Arrange
             var expectedContent = File.ReadAllText($"Resources\\{fileNameWithContentToRead}");
-            var adminUser = SimpleAccessManager.adminIdentity;
+            var adminRole = SimpleAccessManager.adminRole;
 
             // Act
             var readerResult = FileReaderFactory.InitializeReader()
                 .UsingTextReader(_readers[textReaderName])
                 .WithoutEncryption()
-                .WithSecurityAsUser(new SimpleAccessManager(), adminUser)
+                .WithSecurityAsUser(new SimpleAccessManager(), adminRole)
                 .ReadFile($"Resources\\{fileNameWithContentToRead}");
 
             // Assert

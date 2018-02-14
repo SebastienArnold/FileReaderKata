@@ -5,7 +5,7 @@ namespace FileReader.Core
 {
     public class SimpleAccessManager : IAccessManager
     {
-        public static string adminIdentity = "admin";
+        public static string adminRole = "admin";
 
         public bool CanAccess(string path, string identity)
         {
@@ -14,7 +14,7 @@ namespace FileReader.Core
                 throw new FileNotFoundException();
             }
 
-            if (identity == adminIdentity) return true;
+            if (identity == adminRole) return true;
 
             var userIdentityCanAccess = Path.GetFileName(path).Contains(identity);
             return userIdentityCanAccess;

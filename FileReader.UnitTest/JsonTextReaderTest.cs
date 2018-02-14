@@ -13,11 +13,11 @@ namespace FileReader.UnitTest
         {
             // Arrange
             ITextReader reader = new JsonTextReader();
-            var expectedContent = File.ReadAllText("Resources\\FormattedJsonFile-userA.json");
+            var expectedContent = File.ReadAllText("Resources\\FormattedJsonFile-roleA.json");
 
             // Act
             var content = reader.Read(File.ReadAllText("Resources\\JsonFile.json"));
-
+            File.WriteAllText("jsonFile", content);
             // Assert
             Assert.AreEqual(expectedContent, content);
         }

@@ -13,10 +13,10 @@ namespace FileReader.UnitTest
         {
             // Arrange
             ITextReader reader = new SimpleTextReader();
-            var expected = "My line 1\r\n\r\nMy line 3 (2 is empty)";
+            var expected = File.ReadAllText("Resources\\TextFile-roleA.txt");
 
             // Act
-            var content = reader.Read(File.ReadAllText("Resources\\TextFile-userA.txt"));
+            var content = reader.Read(File.ReadAllText("Resources\\TextFile-roleA.txt"));
 
             // Assert
             Assert.AreEqual(expected, content);

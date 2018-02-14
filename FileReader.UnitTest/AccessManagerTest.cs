@@ -10,11 +10,11 @@ namespace FileReader.UnitTest
         public void ShouldAuthorizeAdmin()
         {
             // Arrange
-            string user = SimpleAccessManager.adminIdentity;
+            string role = SimpleAccessManager.adminRole;
             var accessManager = new SimpleAccessManager();
 
             // Act
-            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-userA.xml", user);
+            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-roleA.xml", role);
 
             // Assert
             Assert.IsTrue(canAccess);
@@ -24,25 +24,25 @@ namespace FileReader.UnitTest
         public void ShouldNotAuthorizeIfUserNotAllowed()
         {
             // Arrange
-            string user = "unknownUser";
+            string unknownRole = "unknownRole";
             var accessManager = new SimpleAccessManager();
 
             // Act
-            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-userA.xml", user);
+            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-roleA.xml", unknownRole);
 
             // Assert
             Assert.IsFalse(canAccess);
         }
 
         [TestMethod]
-        public void ShouldAuthorizeAllowedUser()
+        public void ShouldAuthorizeAllowedRole()
         {
             // Arrange
-            string user = "userA";
+            string role = "roleA";
             var accessManager = new SimpleAccessManager();
 
             // Act
-            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-userA.xml", user);
+            var canAccess = accessManager.CanAccess("Resources\\FormattedXmlFile-roleA.xml", role);
 
             // Assert
             Assert.IsTrue(canAccess);
