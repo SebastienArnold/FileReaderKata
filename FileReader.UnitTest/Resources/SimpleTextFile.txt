@@ -1,3 +1,0 @@
-﻿My line 1
-
-My line 3 (2 is empty)

@@ -13,7 +13,7 @@ namespace FileReader.UnitTest
         {
             // Arrange
             ITextReader reader = new JsonTextReader();
-            var expectedContent = File.ReadAllText("Resources\\FormattedJsonFile.json");
+            var expectedContent = File.ReadAllText("Resources\\FormattedJsonFile-userA.json");
 
             // Act
             var content = reader.Read(File.ReadAllText("Resources\\JsonFile.json"));

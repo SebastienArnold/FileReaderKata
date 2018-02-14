@@ -83,32 +83,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FormattedJsonFile.json">
+    <None Include="Resources\FormattedJsonFile-userA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\FormattedXmlFile.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Resources\JsonReverted.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\SimpleTextFile.txt">
+    <None Include="Resources\RevertedJsonFile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\InlineXmlFile.xml">
+    <None Include="Resources\XmlFile.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SimpleReversedTextFile.txt">
+    <None Include="Resources\RevertedTextFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SimpleTextFile-userA.txt">
+    <None Include="Resources\TextFile-userA.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -119,7 +112,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FormattedXmlFileReversed.xml">
+    <None Include="Resources\RevertedXmlFile.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

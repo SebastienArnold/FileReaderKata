@@ -16,7 +16,7 @@ namespace FileReader.UnitTest
             var expected = "My line 1\r\n\r\nMy line 3 (2 is empty)";
 
             // Act
-            var content = reader.Read(File.ReadAllText("Resources\\SimpleTextFile.txt"));
+            var content = reader.Read(File.ReadAllText("Resources\\TextFile-userA.txt"));
 
             // Assert
             Assert.AreEqual(expected, content);

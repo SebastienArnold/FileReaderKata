@@ -100,8 +100,6 @@ namespace FileReader.Core
                 fileContent = _encryptor.Decrypt(fileContent);
             }
 
-            File.WriteAllText("jsonreversed", fileContent);
-
             var contentRead = _textReader.Read(fileContent);
             return new ReaderResult(true, contentRead);
         }
